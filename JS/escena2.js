@@ -1,8 +1,8 @@
-class SceneGame extends Phaser.Scene {
+class Escena2 extends Phaser.Scene {
 
     constructor()
     {
-        super({key:"SceneGame"})
+        super({key:"Escena2"})
     }
 
     preload(){
@@ -15,13 +15,13 @@ class SceneGame extends Phaser.Scene {
     }
 
     create(){
-
+        
         var scene = this.scene
 
         this.map = this.make.tilemap({ key: 'tileArka' })
         this.tileset = this.map.addTilesetImage('Arkanoid', "arka")
-       
-        this.layer = this.map.createDynamicLayer('Capa1', this.tileset, 13, 5)
+        
+        this.layer = this.map.createDynamicLayer('Capa2', this.tileset, 13, 5)
 
         this.paleta = this.physics.add.sprite(360, 550, "paleta").setScale(.5).setCollideWorldBounds(true).setOrigin(0,0)
         this.bola = this.physics.add.sprite(400, 530, "bola").setScale(.3).setCollideWorldBounds(true)
@@ -38,7 +38,7 @@ class SceneGame extends Phaser.Scene {
         this.spaceKey.on('up', function () {
             
             
-                scene.start("Escena2")
+                scene.start("SceneGame")
         
         })
 

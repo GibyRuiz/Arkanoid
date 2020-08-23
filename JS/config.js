@@ -4,7 +4,7 @@ var config = {
     width: 800,
     height: 600,
     backgroundColor: "#f000000",
-    scene: [SceneGame],
+    scene: [SceneGame, Escena2],
     physics: {
         default: "arcade",
         arcade: {
@@ -19,3 +19,5 @@ var config = {
 };
 
 new Phaser.Game(config)
+
+var num = 0
