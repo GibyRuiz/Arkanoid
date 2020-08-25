@@ -7,11 +7,6 @@ class Escena2 extends Phaser.Scene {
 
     preload(){
 
-        this.load.tilemapTiledJSON('tileArka', 'JSON/Arkanoid.json')
-        this.load.image('arka', 'Arkanoid.png')
-        this.load.image('paleta', 'paleta.png')
-        this.load.image('bola', 'bola.png')
-
     }
 
     create(){
