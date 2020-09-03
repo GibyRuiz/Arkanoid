@@ -1,8 +1,8 @@
-class SceneGame extends Phaser.Scene {
+class Escena1 extends Phaser.Scene {
 
     constructor()
     {
-        super({key:"SceneGame"})
+        super({key:"Escena1"})
     }
 
     preload(){

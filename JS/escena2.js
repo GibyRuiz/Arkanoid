@@ -20,7 +20,7 @@ class Escena2 extends Phaser.Scene {
         this.spaceKey.on('up', function () {
             
             
-            scene.start("SceneGame")
+            scene.start("Escena1")
         
         })
 
