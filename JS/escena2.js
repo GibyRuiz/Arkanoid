@@ -1,9 +1,8 @@
-// import Paleta from "./paleta.js"
-// import Bola from "./bola.js"
+import Paleta from "./paleta.js"
+import Bola from "./bola.js"
 
 
-// export default 
-class Escena2 extends Phaser.Scene {
+export default class Escena2 extends Phaser.Scene {
 
     constructor()
     {

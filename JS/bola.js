@@ -1,5 +1,4 @@
-// export default 
-class Bola extends Phaser.Physics.Arcade.Sprite {
+export default class Bola extends Phaser.Physics.Arcade.Sprite {
 
     constructor(config) {
 
