@@ -1,5 +1,5 @@
-import Escena1 from "./escena1.js"
-import Escena2 from "./escena2.js"
+// import Escena1 from "./escena1.js"
+// import Escena2 from "./escena2.js"
 
 var config = {
     type: Phaser.AUTO,
