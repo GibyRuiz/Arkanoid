@@ -1,4 +1,4 @@
-class Paleta extends Phaser.Physics.Arcade.Sprite {
+export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
     constructor(config) {
 
