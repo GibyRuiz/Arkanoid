@@ -11,11 +11,22 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         this.setBounce(1.1)
         this.setVelocity(100, -300)
         this.paleta = this.escena.paleta
-        this.escena.map.setCollision([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ])
+        this.escena.map.setCollision([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ])
 
         this.escena.physics.add.collider(this, this.escena.layer, (bola, tile) => {
 
-            this.escena.map.removeTile(tile)
+            
+            
+
+            if(tile.index % 2 == 0){
+
+                this.escena.map.removeTile(tile)
+            }
+
+            else{
+                
+                this.escena.map.putTileAt(tile.index + 1, tile.x, tile.y)
+            }
         })
 
         this.escena.add.text(20, 580, 'Presiona "espacio" para cambiar de capa')
