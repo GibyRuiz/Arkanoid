@@ -33,7 +33,7 @@ export default class Escena1 extends Phaser.Scene {
             scene.start("Escena2")
         
         })
-
-    }
+        
+    }     
 
 }

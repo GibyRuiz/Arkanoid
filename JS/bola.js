@@ -27,7 +27,36 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
                 
                 this.escena.map.putTileAt(tile.index + 1, tile.x, tile.y)
             }
+
+            if(this.particles){
+
+                var particulas = this.particles
+            setTimeout(() => {
+                particulas.destroy()
+            }, 200)
+               
+            
+            }
+
+            this.particles = this.escena.add.particles("bola")
+        
+            this.emisor = this.particles.createEmitter({
+            x: this.x,
+            y: this.y,
+            scale: { start: 0.2, end: 0.02 },
+            quantity: 8,
+            accelerationY: 1500,
+            frequency: 300,
+            speed: 300            
+            })
+        
+            setTimeout(() => {
+
+              this.particles.destroy()
+
+            }, 300)
         })
+    
 
         this.escena.add.text(20, 580, 'Presiona "espacio" para cambiar de capa')
 
@@ -64,5 +93,6 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             }
         
         })
+
     }
 }
