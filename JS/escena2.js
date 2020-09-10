@@ -13,6 +13,8 @@ export default class Escena2 extends Phaser.Scene {
         
         var scene = this.scene
 
+        this.add.image(-100,0,"bg2").setOrigin(0,0).setScale(1.7)
+
         this.map = this.make.tilemap({ key: 'tileArka' })
         this.tileset = this.map.addTilesetImage('Arkanoid', "arka")
         this.layer = this.map.createDynamicLayer('Capa2', this.tileset, 13, 5)

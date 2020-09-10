@@ -14,12 +14,16 @@ export default class Escena1 extends Phaser.Scene {
         this.load.image('arka', 'Arkanoid.png')
         this.load.image('paleta', 'paleta.png')
         this.load.image('bola', 'bola.png')
+        this.load.image("bg", "bg.jpg")
+        this.load.image("bg2", "bg2.jpg")
         this.load.spritesheet("coleccionables", "collect.png", { frameWidth: 59, frameHeight: 59 })
     }
 
     create(){
 
         var scene = this.scene
+
+        this.add.image(-100,0,"bg").setOrigin(0,0).setScale(1.7)
 
         this.map = this.make.tilemap({ key: 'tileArka' })
         this.tileset = this.map.addTilesetImage('Arkanoid', "arka")
