@@ -9,7 +9,7 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
         this.setScale(.3)
         this.setCollideWorldBounds(true)
         this.setBounce(1.1)
-        this.setVelocity(100, -300)
+        this.setVelocity(Math.floor(Math.random() * 200) , -300)
         this.paleta = this.escena.paleta
         this.body.onWorldBounds = true;
 
