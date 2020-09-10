@@ -1,4 +1,4 @@
-export default class Bola extends Phaser.Physics.Arcade.Sprite {
+export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
 
     constructor(config) {
 
@@ -11,11 +11,14 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         this.setBounce(1.1)
         this.setVelocity(100, -300)
         this.paleta = this.escena.paleta
-        this.escena.map.setCollision([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ])
+        this.body.onWorldBounds = true;
 
-        this.grupoCollect = this.escena.physics.add.group()
-        this.escena.grupocollect = this.grupoCollect
-        
+        this.escena.physics.world.on('worldbounds', () => {
+            
+            if(this.y >= 550){
+                this.destroy()
+            }
+        });
 
         this.escena.physics.add.collider(this, this.escena.layer, (bola, tile) => {
 
@@ -23,7 +26,7 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             if(tile.index % 2 == 0){
 
                 this.collect = this.escena.physics.add.sprite(this.x, this.y, "coleccionables", Math.floor(Math.random() * 8)).setScale(.3)
-                this.grupoCollect.add(this.collect) 
+                this.escena.grupocollect.add(this.collect) 
                 this.collect.setVelocity(0, 200)
 
                 this.escena.map.removeTile(tile)
@@ -66,7 +69,6 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         })
     
 
-        this.escena.add.text(20, 580, 'Presiona "espacio" para cambiar de capa')
 
         this.escena.physics.add.overlap(this.paleta, this, () => {
             

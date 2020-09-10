@@ -22,3 +22,4 @@ var config = {
 };
 
 new Phaser.Game(config)
+

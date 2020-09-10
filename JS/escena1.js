@@ -14,6 +14,7 @@ export default class Escena1 extends Phaser.Scene {
         this.load.image('arka', 'Arkanoid.png')
         this.load.image('paleta', 'paleta.png')
         this.load.image('bola', 'bola.png')
+        this.load.spritesheet("coleccionables", "collect.png", { frameWidth: 59, frameHeight: 59 })
     }
 
     create(){
@@ -32,7 +33,7 @@ export default class Escena1 extends Phaser.Scene {
             
             scene.start("Escena2")
         
-        })
+        })     
         
     }     
 

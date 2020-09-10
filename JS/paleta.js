@@ -1,3 +1,5 @@
+import Bola2 from "./bolas.js"
+
 export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
     constructor(config) {
@@ -8,10 +10,22 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
         this.setScale(.5)
         this.setCollideWorldBounds(true)
         this.setOrigin(0,0)
+        this.cortaUpdate = true
 
         config.scene.cursors = config.scene.input.keyboard.createCursorKeys()
         config.scene.spaceKey = config.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+
+
         config.scene.update = () => {
+
+            if(config.scene.grupocollect && this.cortaUpdate){
+                config.scene.physics.add.overlap(this, config.scene.grupocollect, (paleta, collect) => {
+
+                    collect.destroy()
+                    new Bola2({scene: config.scene, x: this.x, y: this.y, name: "bola"})
+                })
+                this.cortaUpdate = false
+            }
 
             if (config.scene.cursors.left.isDown)
 
