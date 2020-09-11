@@ -45,23 +45,69 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             
             }
 
-            this.particles = this.escena.add.particles("bola")
+            this.particles = this.escena.add.particles("bolas")
+
+            var frame
+
+            
+            switch (tile.index) {
+
+                        case 2:
+                                frame = 1
+                                break
+
+                        case 4:
+                            frame = 3
+                                break
+
+                        case 6:
+                            frame = 2
+                                break
+
+                        case 8:
+                            frame = 0
+                                break
+
+                        case 10:
+                            frame = 5
+                                break
+
+                        case 12:
+                            frame = 4
+                            break
+        
+                        case 14:
+                            frame = 5
+                                break
+        
+                        case 16:
+                            frame = 3
+                                break
+            
+                        default:
+                                break
+            }
+
+           
+
+            
         
             this.emisor = this.particles.createEmitter({
             x: this.x,
-            y: this.y,
-            scale: { start: 0.2, end: 0.02 },
+            y: this.y - 20,
+            scale: { start: .9, end: 0.1 },
             quantity: 8,
-            accelerationY: 1500,
-            frequency: 300,
-            speed: 300            
+            accelerationY: 2500,
+            frequency: 500,
+            speed: 500,
+            frame: frame
             })
         
             setTimeout(() => {
 
               this.particles.destroy()
 
-            }, 300)
+            }, 500)
 
         })
     

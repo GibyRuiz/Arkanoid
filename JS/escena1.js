@@ -17,6 +17,7 @@ export default class Escena1 extends Phaser.Scene {
         this.load.image("bg", "bg.jpg")
         this.load.image("bg2", "bg2.jpg")
         this.load.spritesheet("coleccionables", "collect.png", { frameWidth: 59, frameHeight: 59 })
+        this.load.spritesheet("bolas", "balls.png", { frameWidth: 17, frameHeight: 17 })
     }
 
     create(){
