@@ -31,11 +31,10 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                     if((collect.x - paleta.x) < 60) {
                         bola.setVelocityX(Math.floor(Math.random() * -200))
                     }
-                   console.log(collect.frame.name)
 
                     switch (collect.frame.name) {
                         case 0: bolaAlfa.setTintFill("0x0000ff")
-                                bola.setTintFill("0x0000ff")
+                                bola.clearTint()
                         break;
 
                         case 1: bolaAlfa.setTintFill("0x00ff00")
@@ -77,7 +76,8 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                     bolaAlfa.y = this.y
                     bolaAlfa.alpha = .4
 
-                    var intervalo1 = setInterval(() => {
+                    var intervalo = setInterval(() => {
+                        
                         incrementoTamañoBola += .2
                         bolaAlfa.setScale(incrementoTamañoBola)
         
@@ -100,13 +100,15 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                             bolaAlfa.alpha = 0
                             incrementoTamañoBola = 0
                             bolaAlfa.setScale(incrementoTamañoBola)
-                            clearInterval(intervalo1)
+                            console.log(intervalo)
+                            clearInterval(intervalo)
             
                         }
+                    
         
                     }, 1)
 
-
+                
 
                 })
                 this.cortaUpdate = false
