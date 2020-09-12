@@ -78,7 +78,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
                     var intervalo = setInterval(() => {
                         
-                        incrementoTamañoBola += .2
+                        incrementoTamañoBola += .4
                         bolaAlfa.setScale(incrementoTamañoBola)
         
                         if(incrementoTamañoBola >= 5){
