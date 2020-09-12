@@ -105,7 +105,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                     
                     bolaAlfa.x = this.x + 60
                     bolaAlfa.y = this.y
-                    bolaAlfa.alpha = .4
+                    bolaAlfa.alpha = .6
 
                     var intervalo = setInterval(() => {
                         
@@ -114,22 +114,22 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
         
                         if(incrementoTamañoBola >= 4){
         
-                            bolaAlfa.alpha = .35
+                            bolaAlfa.alpha = .5
                         }
 
                         if(incrementoTamañoBola >= 9){
         
-                            bolaAlfa.alpha = .25
+                            bolaAlfa.alpha = .4
                         }
 
                         if(incrementoTamañoBola >= 13){
         
-                            bolaAlfa.alpha = .15
+                            bolaAlfa.alpha = .3
                         }
 
-                        if(incrementoTamañoBola >= 17){
+                        if(incrementoTamañoBola >= 16){
         
-                            bolaAlfa.alpha = .05
+                            bolaAlfa.alpha = .2
                         }
         
                         if(incrementoTamañoBola >= 20){
