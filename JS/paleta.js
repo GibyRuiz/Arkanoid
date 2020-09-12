@@ -30,17 +30,37 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                     collect.destroy()
 
                     if(config.scene.arrEmitter[0]){
+
                         for (let index = 0; index < config.scene.arrEmitter.length; index++) {
-                            config.scene.arrEmitter[index].destroy()
+                            
+                            config.scene.tweens.add({
+                                targets: config.scene.arrEmitter[index],
+                                duration:160,
+                                
+                                
+                                
+                                ease: 'power2',
+                                y: -600
+                            })
                             
                         }
+
+                        setTimeout(() =>{
+                            for (let index = 0; index < config.scene.arrEmitter.length; index++) {
+                            
+                                config.scene.arrEmitter[index].destroy()
+                                
+                            }
+                        }, 200)
+
+                       
                         
                     }
 
                    
-                    var bola = new Bola2({scene: config.scene, x: this.x + 50, y: this.y - 30, name: "bola"})
+                    var bola = new Bola2({scene: config.scene, x: this.x + 50, y: this.y - 25, name: "bola"})
                     if((collect.x - paleta.x) < 60) {
-                        bola.setVelocityX(Math.floor(Math.random() * -200))
+                        bola.setVelocityX(Math.floor(Math.random() * -400))
                     }
 
                     switch (collect.frame.name) {
@@ -89,25 +109,30 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
                     var intervalo = setInterval(() => {
                         
-                        incrementoTamañoBola += .4
+                        incrementoTamañoBola += .65
                         bolaAlfa.setScale(incrementoTamañoBola)
         
-                        if(incrementoTamañoBola >= 5){
+                        if(incrementoTamañoBola >= 4){
         
-                            bolaAlfa.alpha = .3
+                            bolaAlfa.alpha = .35
                         }
 
-                        if(incrementoTamañoBola >= 10){
+                        if(incrementoTamañoBola >= 9){
         
-                            bolaAlfa.alpha = .2
+                            bolaAlfa.alpha = .25
                         }
 
-                        if(incrementoTamañoBola >= 14){
+                        if(incrementoTamañoBola >= 13){
         
-                            bolaAlfa.alpha = .1
+                            bolaAlfa.alpha = .15
+                        }
+
+                        if(incrementoTamañoBola >= 17){
+        
+                            bolaAlfa.alpha = .05
                         }
         
-                        if(incrementoTamañoBola >= 16){
+                        if(incrementoTamañoBola >= 20){
                             bolaAlfa.alpha = 0
                             incrementoTamañoBola = 0
                             bolaAlfa.setScale(incrementoTamañoBola)

@@ -24,7 +24,7 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
 
                 this.collect = this.escena.physics.add.sprite(this.x, this.y, "coleccionables", Math.floor(Math.random() * 8)).setScale(.3)
                 this.grupoCollect.add(this.collect) 
-                this.collect.setVelocity(0, 200)
+                this.collect.setVelocity(0, 230)
 
                 this.escena.map.removeTile(tile)
 
@@ -136,32 +136,32 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             
             if((this.x - this.paleta.x) > 87){
 
-                this.setVelocity(100,-300)
+                this.setVelocity(100,-350)
             }
 
             else if((this.x - this.paleta.x) < 27){
 
-                this.setVelocity(-100,-300)
+                this.setVelocity(-100,-350)
             }
 
             else if((this.x - this.paleta.x) > 27 && (this.x - this.paleta.x) < 50){
 
-                this.setVelocity(-60,-300)
+                this.setVelocity(-60,-350)
             }
 
             else if((this.x - this.paleta.x) > 70 && (this.x - this.paleta.x) < 87){
 
-                this.setVelocity(60,-300)
+                this.setVelocity(60,-350)
             }
 
             else if((this.x - this.paleta.x) < 70 && (this.x - this.paleta.x) > 60){
 
-                this.setVelocity(40,-300)
+                this.setVelocity(40,-350)
             }
 
             else if((this.x - this.paleta.x) < 60 && (this.x - this.paleta.x) > 50){
 
-                this.setVelocity(-40,-300)
+                this.setVelocity(-40,-350)
             }
         
         })

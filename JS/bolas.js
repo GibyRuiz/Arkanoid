@@ -27,7 +27,7 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
 
                 this.collect = this.escena.physics.add.sprite(this.x, this.y, "coleccionables", Math.floor(Math.random() * 8)).setScale(.3)
                 this.escena.grupocollect.add(this.collect) 
-                this.collect.setVelocity(0, 200)
+                this.collect.setVelocity(0, 230)
 
                 this.escena.map.removeTile(tile)
 
@@ -44,7 +44,8 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
                         lifespan: 800,
                         blendMode: 'SCREEN',
                         follow: this.collect,
-                        alpha: .3
+                        alpha: .3,
+                        
                         
                     })
 
