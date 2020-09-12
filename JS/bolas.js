@@ -31,6 +31,23 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
 
                 this.escena.map.removeTile(tile)
 
+                this.escena.particles = this.escena.add.particles('bola')
+
+                this.escena.arrEmitter.push( this.escena.particles)
+
+                this.escena.particles.createEmitter({
+                    
+                        angle: -90,
+                        speed: { min: -100, max: 500 },
+                        gravityY: 0,
+                        scale: { start: 0.4, end: 0.1 },
+                        lifespan: 800,
+                        blendMode: 'SCREEN',
+                        follow: this.collect,
+                        alpha: .3
+                        
+                    })
+
             }
 
             else{

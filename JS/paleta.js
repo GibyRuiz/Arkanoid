@@ -11,6 +11,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true)
         this.setOrigin(0,0)
         this.cortaUpdate = true
+        
 
         config.scene.cursors = config.scene.input.keyboard.createCursorKeys()
         config.scene.spaceKey = config.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
@@ -27,6 +28,16 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 config.scene.physics.add.overlap(this, config.scene.grupocollect, (paleta, collect) => {
                     
                     collect.destroy()
+
+                    if(config.scene.arrEmitter[0]){
+                        for (let index = 0; index < config.scene.arrEmitter.length; index++) {
+                            config.scene.arrEmitter[index].destroy()
+                            
+                        }
+                        
+                    }
+
+                   
                     var bola = new Bola2({scene: config.scene, x: this.x + 50, y: this.y - 30, name: "bola"})
                     if((collect.x - paleta.x) < 60) {
                         bola.setVelocityX(Math.floor(Math.random() * -200))
@@ -110,6 +121,8 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 
 
                 })
+
+                
                 this.cortaUpdate = false
             }
 
@@ -139,6 +152,8 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
             
                 config.scene.bola.destroy()
             }
+
+            
         }
     } 
 }

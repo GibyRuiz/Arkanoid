@@ -30,6 +30,8 @@ export default class Escena2 extends Phaser.Scene {
         
         })
 
+        this.arrEmitter = []
+
     }
 
 }

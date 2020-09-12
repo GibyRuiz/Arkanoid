@@ -38,6 +38,24 @@ export default class Escena1 extends Phaser.Scene {
             scene.start("Escena2")
         
         })     
+
+        this.arrEmitter = []
+
+        // var particles = this.add.particles('bola')
+
+        // var emisor = particles.createEmitter({
+        //     x: 300,
+        //     y: 300,
+        //     angle: -90,
+        //     speed: { min: -100, max: 500 },
+        //     gravityY: 0,
+        //     scale: { start: 0.4, end: 0.1 },
+        //     lifespan: 800,
+        //     blendMode: 'SCREEN',
+        //     follow: 
+        // })
+
+        // emisor.startFollow(this.paleta)
         
     }     
 
