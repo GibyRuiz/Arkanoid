@@ -20,6 +20,8 @@ export default class Escena2 extends Phaser.Scene {
         this.layer = this.map.createDynamicLayer('Capa2', this.tileset, 13, 5)
 
         this.paleta = new Paleta({scene: this, x: 360, y: 550, name: "paleta"})
+
+        this.arrEmiterBolas = []
     
         this.bola = new Bola({scene: this, x: 400, y: 530, name: "bola"})
 
@@ -31,6 +33,7 @@ export default class Escena2 extends Phaser.Scene {
         })
 
         this.arrEmitter = []
+       
 
     }
 

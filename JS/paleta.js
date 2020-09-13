@@ -175,6 +175,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
             if(config.scene.bola.y > 583){
             
+                config.scene.bola.efectoParticulasBolas.destroy()
                 config.scene.bola.destroy()
             }
 

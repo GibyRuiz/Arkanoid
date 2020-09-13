@@ -13,10 +13,26 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
         this.paleta = this.escena.paleta
         this.body.onWorldBounds = true
 
+        this.efectoParticulasBolas = this.escena.add.particles('bolas')
+        this.escena.arrEmiterBolas.push( this.efectoParticulasBolas)
+
+        this.efectoParticulasBolas.createEmitter({
+            frame: 2,
+            speed: 2,
+            quantity: 2,
+            gravity: { x: 0, y: 100 },
+            scale: { start: 1.6, end: 0.4 },
+            follow: this,
+            alpha: { start: .05, end: 0 },
+            lifespan: 300,
+        });
+
         this.escena.physics.world.on('worldbounds', () => {
             
             if(this.y >= 550){
+                this.efectoParticulasBolas.destroy()
                 this.destroy()
+                
             }
         });
 

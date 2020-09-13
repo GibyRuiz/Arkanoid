@@ -15,6 +15,20 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
 
         this.grupoCollect = this.escena.physics.add.group()
         this.escena.grupocollect = this.grupoCollect
+
+        this.efectoParticulasBolas = this.escena.add.particles('bolas')
+        this.escena.arrEmiterBolas.push( this.efectoParticulasBolas)
+
+        this.efectoParticulasBolas.createEmitter({
+            frame: 2,
+            speed: 2,
+            quantity: 2,
+            gravity: { x: 0, y: 100 },
+            scale: { start: 1.6, end: 0.4 },
+            follow: this,
+            alpha: { start: .05, end: 0 },
+            lifespan: 300,
+        });
         
 
         this.escena.physics.add.collider(this, this.escena.layer, (bola, tile) => {
