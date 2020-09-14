@@ -12,6 +12,7 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         this.setVelocity(100, -300)
         this.paleta = this.escena.paleta
         this.escena.map.setCollision([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ])
+        
 
         this.grupoCollect = this.escena.physics.add.group()
         this.escena.grupocollect = this.grupoCollect

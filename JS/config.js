@@ -23,3 +23,5 @@ var config = {
 
 new Phaser.Game(config)
 
+window.booleanMusic = true
+
