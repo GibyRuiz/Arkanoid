@@ -36,9 +36,6 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                             config.scene.tweens.add({
                                 targets: config.scene.arrEmitter[index],
                                 duration:160,
-                                
-                                
-                                
                                 ease: 'power2',
                                 y: -600
                             })
@@ -56,6 +53,8 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                        
                         
                     }
+
+                    config.scene.physics.add.overlap(this, config.scene.grupoCollectLight, (paleta, collectLight) => {collectLight.destroy()})
 
                    
                     var bola = new Bola2({scene: config.scene, x: this.x + 50, y: this.y - 25, name: "bola"})
@@ -151,7 +150,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 this.cortaUpdate = false
             }
 
-            Phaser.Actions.Rotate(config.scene.grupocollect.getChildren(), .2)
+            Phaser.Actions.Rotate(config.scene.grupocollect.getChildren(), .4)
 
 
             if (config.scene.cursors.left.isDown)

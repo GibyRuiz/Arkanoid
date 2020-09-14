@@ -41,11 +41,23 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
 
             if(tile.index % 2 == 0){
 
+                this.collectLight = this.escena.physics.add.sprite(this.x, this.y, "bolas", 0).setAlpha(.7).setScale(1.5)
                 this.collect = this.escena.physics.add.sprite(this.x, this.y, "coleccionables", Math.floor(Math.random() * 8)).setScale(.3)
                 this.escena.grupocollect.add(this.collect) 
+                this.escena.grupoCollectLight.add(this.collectLight)
+                this.collectLight.setVelocity(0, 230)
                 this.collect.setVelocity(0, 230)
 
                 this.escena.map.removeTile(tile)
+
+                this.escena.tweens.add({
+                    targets: this.collectLight,
+                    duration:200,
+                    ease: 'linear',
+                    scale: 2,
+                    yoyo: true,
+                    repeat: -1
+                })
 
                 this.escena.particles = this.escena.add.particles('bola')
 
