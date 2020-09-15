@@ -191,6 +191,20 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 })
             }
 
+            if(config.scene.grupocollect){
+
+                for (let index = 0; index < config.scene.grupocollect.getChildren().length; index++) {
+                    if(config.scene.grupocollect.getChildren()[index].y >3000){
+
+                        config.scene.grupocollect.getChildren()[index].destroy()
+                    }
+                    
+                    
+                }
+
+            
+            }
+
             
         }
     } 
