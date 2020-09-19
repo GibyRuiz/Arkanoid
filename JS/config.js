@@ -1,3 +1,4 @@
+// Importación de clases de escenas 
 import Escena1 from "./escena1.js"
 import Escena2 from "./escena2.js"
 
@@ -23,5 +24,6 @@ var config = {
 
 new Phaser.Game(config)
 
+// Variable que evita que la música se ejecute más de una vez 
 window.booleanMusic = true
 

@@ -11,16 +11,19 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         this.setBounce(1.1)
         this.setVelocity(100, -300)
         this.paleta = this.escena.paleta
+
+        // Física a los tiles de los ladrillos 
         this.escena.map.setCollision([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ])
         
-
+        // Gupo de coleccionables 
         this.grupoCollect = this.escena.physics.add.group()
         this.escena.grupocollect = this.grupoCollect
 
+        // Grupo de efecto de partículas de coleccionables
         this.grupoCollectLight = this.escena.physics.add.group()
         this.escena.grupoCollectLight = this.grupoCollectLight
 
-
+        // Efecto de partículas de las bolas 
         this.efectoParticulasBolas = this.escena.add.particles('bolas')
         this.escena.arrEmiterBolas.push( this.efectoParticulasBolas)
 
@@ -35,21 +38,28 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             lifespan: 300,
         });
         
-
+        // Colisión de la bola con los tiles 
         this.escena.physics.add.collider(this, this.escena.layer, (bola, tile) => {
 
 
             if(tile.index % 2 == 0){
 
+                // Carga de sprite para crear el efecto de luz alrededor de los coleccionables 
                 this.collectLight = this.escena.physics.add.sprite(this.x, this.y, "bolas", 0).setAlpha(.7).setScale(1.5)
+
+                // Carga de coleccionable cuando se rompe un ladrillo 
                 this.collect = this.escena.physics.add.sprite(this.x, this.y, "coleccionables", Math.floor(Math.random() * 8)).setScale(.3)
+
+                // Coordinación de posición de coleccionable con su efecto 
                 this.grupoCollectLight.add(this.collectLight)
                 this.grupoCollect.add(this.collect) 
                 this.collectLight.setVelocity(0, 230)
                 this.collect.setVelocity(0, 230)
 
+                // Se destruye el tile del bloque 
                 this.escena.map.removeTile(tile)
 
+                // Efecto de escalamiento de ida y vuelta de la luz que rodea al coleccionable 
                 this.escena.tweens.add({
                     targets: this.collectLight,
                     duration:200,
@@ -59,6 +69,7 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
                     repeat: -1
                 })
 
+                // Creación de efecto de partículas de rastro de humo de los coleccionables 
                 this.escena.particles = this.escena.add.particles('bola')
 
                 this.escena.arrEmitter.push( this.escena.particles)
@@ -79,26 +90,29 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
 
             }
 
+            // Cambio de tile de ladrillo sano a roto
             else{
                 
                 this.escena.map.putTileAt(tile.index + 1, tile.x, tile.y)
             }
 
+            // Se destruye el efecto de partículas de cuando se choca con un ladrillo 
             if(this.particles){
 
                 var particulas = this.particles
-            setTimeout(() => {
-                particulas.destroy()
-            }, 200)
+                
+                setTimeout(() => {
+                    particulas.destroy()
+                }, 200)
                
             
             }
 
+            // Se crea el efecto de partículas de cuando se chocha con un ladrillo 
             this.particles = this.escena.add.particles("bolas")
 
             var frame
 
-            
             switch (tile.index) {
 
                         case 2:
@@ -138,9 +152,6 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             }
 
            
-
-            
-        
             this.emisor = this.particles.createEmitter({
             x: this.x,
             y: this.y - 20,
@@ -151,7 +162,8 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
             speed: 500,
             frame: frame
             })
-        
+
+             // Se destruye el efecto de partículas de cuando se choca con un ladrillo 
             setTimeout(() => {
 
               this.particles.destroy()
@@ -160,9 +172,10 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
 
         })
     
-
+        // Texto abajo a la izquierda 
         this.escena.add.text(20, 580, 'Presiona "espacio" para cambiar de capa')
 
+        // Colisión de la bola con la paleta. Direccionamiento por resta de abscisas.  
         this.escena.physics.add.overlap(this.paleta, this, () => {
             
             if((this.x - this.paleta.x) > 87){
