@@ -14,7 +14,7 @@ export default class Bola2 extends Phaser.Physics.Arcade.Sprite {
         this.paleta = this.escena.paleta
         this.body.onWorldBounds = true
 
-        // Efecto de partículas de las bolas 
+        // Efecto de partículas de rastro de las bolas 
         this.efectoParticulasBolas = this.escena.add.particles('bolas')
         this.escena.arrEmiterBolas.push( this.efectoParticulasBolas)
 

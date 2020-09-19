@@ -1,3 +1,4 @@
+// Importación de clase de la bola secundaria 
 import Bola2 from "./bolas.js"
 
 export default class Paleta extends Phaser.Physics.Arcade.Sprite {
@@ -12,23 +13,29 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
         this.setOrigin(0,0)
         this.cortaUpdate = true
         
-
+        // Creación de cursores 
         config.scene.cursors = config.scene.input.keyboard.createCursorKeys()
+
+        // Funcionalidad a la barra espaciadora 
         config.scene.spaceKey = config.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
+        // Creación de sprite para el efecto de relámpago cuando se junta un coleccionable
         var bolaAlfa = config.scene.add.image(this.x, this.y, "bola").setScale(.2)
         bolaAlfa.alpha = 0
 
+        // Declaración de método Update al objeto de la escena 
         config.scene.update = () => {
 
             if(config.scene.grupocollect && this.cortaUpdate){
 
                 var incrementoTamañoBola = 0
 
+                // Colisión entre la barra y el coleccionable 
                 config.scene.physics.add.overlap(this, config.scene.grupocollect, (paleta, collect) => {
                     
                     collect.destroy()
 
+                    // Se destruye el efecto de rastro de humo a los coleccionables 
                     if(config.scene.arrEmitter[0]){
 
                         for (let index = 0; index < config.scene.arrEmitter.length; index++) {
@@ -54,15 +61,18 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                         
                     }
 
+                    // Se destruye el efecto de luz alrededor de los coleccionables 
                     config.scene.physics.add.overlap(this, config.scene.grupoCollectLight, (paleta, collectLight) => {collectLight.destroy()})
 
-                   
+                //    Se instancia una bola cuando se recolecta un coleccionable 
                     var bola = new Bola2({scene: config.scene, x: this.x + 50, y: this.y - 25, name: "bola"})
                     if((collect.x - paleta.x) < 60) {
                         bola.setVelocityX(Math.floor(Math.random() * -400))
                     }
 
+                    // Se tintea el efecto relámpago 
                     switch (collect.frame.name) {
+
                         case 0: bolaAlfa.setTintFill("0x0000ff")
                                 bola.clearTint()
                         break;
@@ -101,7 +111,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                     }
                    
 
-                    
+                    // Configuración del efecto relámpago 
                     bolaAlfa.x = this.x + 60
                     bolaAlfa.y = this.y
                     bolaAlfa.alpha = .6
@@ -146,13 +156,14 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
 
                 })
 
-                
+                // Se deja de ejecutar el update 
                 this.cortaUpdate = false
             }
 
+            // Se hace rotar a los coleccionables 
             Phaser.Actions.Rotate(config.scene.grupocollect.getChildren(), .4)
 
-
+            // Movimiento de la paleta 
             if (config.scene.cursors.left.isDown)
 
             {
@@ -172,12 +183,14 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 this.setVelocity(0, 0)
             }
 
+            // Se destruye la bola y su efecto de partículas cuando se sale del escenario 
             if(config.scene.bola.y > 583){
             
                 config.scene.bola.efectoParticulasBolas.destroy()
                 config.scene.bola.destroy()
             }
 
+            // Se destruyen los coleccionables cuando se salen del escenario 
             if( config.scene.grupoCollectLight){
 
                 config.scene.grupoCollectLight.children.iterate(function (child) {
@@ -191,6 +204,7 @@ export default class Paleta extends Phaser.Physics.Arcade.Sprite {
                 })
             }
 
+             // Se destruye el efecto de luz alrededor de los coleccionables cuando se salen del escenario 
             if(config.scene.grupocollect){
 
                 for (let index = 0; index < config.scene.grupocollect.getChildren().length; index++) {

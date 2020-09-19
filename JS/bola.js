@@ -23,7 +23,7 @@ export default class Bola extends Phaser.Physics.Arcade.Sprite {
         this.grupoCollectLight = this.escena.physics.add.group()
         this.escena.grupoCollectLight = this.grupoCollectLight
 
-        // Efecto de partículas de las bolas 
+        // Efecto de partículas de rastro de las bolas 
         this.efectoParticulasBolas = this.escena.add.particles('bolas')
         this.escena.arrEmiterBolas.push( this.efectoParticulasBolas)
 
